@@ -1,4 +1,4 @@
-<div>
+<div  x-cloak>
     <h2 class="mb-2 font-semibold">Instructions</h2>
 
     <ol class="list-decimal list-inside">
