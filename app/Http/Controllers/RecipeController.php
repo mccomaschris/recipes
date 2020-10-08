@@ -14,7 +14,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return view('recipes.index');
+        $random = Recipe::inRandomOrder()->take(10)->get();
+        return view('recipes.index', ['random' => $random]);
     }
 
     /**
@@ -35,7 +36,7 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'title' => 'required|unique:recipes|max:255',
         ]);
 
@@ -43,6 +44,7 @@ class RecipeController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'notes' => $request->notes,
+            'secret_notes' => $request->secret_notes,
             'favorite' => $request->favorite ? 1 : 0
         ]);
 
@@ -68,7 +70,7 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        //
+        return view('recipes.edit', ['recipe' => $recipe]);
     }
 
     /**
@@ -80,7 +82,18 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:recipes,title,' . $recipe->id
+        ]);
+
+        $recipe->title = $request->title;
+        $recipe->description = $request->description;
+        $recipe->notes = $request->notes;
+        $recipe->secret_notes = $request->secret_notes;
+        $recipe->favorite = $request->favorite ? 1 : 0;
+        $recipe->save();
+
+        return redirect()->route('recipe.show', ['recipe' => $recipe->slug]);
     }
 
     /**

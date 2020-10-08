@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [RecipeController::class, 'index'])->name('recipe.index');
 Route::get('/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
-Route::post('/recipe', [RecipeController::class, 'store']);
+Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/recipe/{recipe}/edit', [RecipeController::class, 'edit'])->name('recipe.edit');
+    Route::put('/recipe/{recipe}', [RecipeController::class, 'update'])->name('recipe.update');
+});
