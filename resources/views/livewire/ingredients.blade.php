@@ -3,7 +3,7 @@
 
     <ul class="list-disc list-inside">
         @forelse ($recipe->ingredients as $ingredient)
-            <li>{{ $ingredient->amount }} {{ $ingredient->measurement }} {{ $ingredient->ingredient }}</li>
+            <livewire:edit-ingredient :ingredient="$ingredient" :key="$ingredient->id" />
         @empty
             <p>There are no ingredients for this recipe</p>
         @endforelse
@@ -35,7 +35,7 @@
                     <option value="cloves">cloves</option>
                 </select>
                 <input wire:model="ingredient" type="text" class="mt-4 lg:mt-0 lg:ml-4 form-input lg:flex-1 w-full lg:w-auto" placeholder="Add ingredient" required />
-                <input type="submit" value="Save" class="mt-4 lg:mt-0 lg:ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <input type="submit" value="Add" class="mt-4 lg:mt-0 lg:ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             </form>
         </div>
     @endif

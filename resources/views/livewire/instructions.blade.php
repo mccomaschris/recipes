@@ -16,7 +16,7 @@
                 @csrf
                 <label for="instruction" class="hidden">Instruction</label>
                 <input wire:model="instruction" type="text" class="form-input w-full" placeholder="Add instruction" required />
-                <input type="submit" value="Save" class="mt-4 lg:mt-0 lg:ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <input type="submit" value="Add" class="mt-4 lg:mt-0 lg:ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             </form>
         </div>
     @endif
