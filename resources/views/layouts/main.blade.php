@@ -45,7 +45,7 @@
                         <div class="text-xl  lg:text-4xl uppercase ml-2 lg:ml-4 font-bold"><a href="/" class="text-white lg:text-green-500">CMM Cooks</a></div>
                     </div>
                 </header>
-                <main class="px-6 lg:px-10 bg-white pt-4">
+                <main class="px-6 lg:px-10 bg-white pt-4 pb-8">
                     <div class="my-4">
                         @yield('content')
                     </div>
