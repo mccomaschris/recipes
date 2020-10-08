@@ -3,7 +3,11 @@
 
     <ul class="list-disc list-inside">
         @forelse ($recipe->ingredients as $ingredient)
-            <livewire:edit-ingredient :ingredient="$ingredient" :key="$ingredient->id" />
+            @if(Auth::check())
+                <livewire:edit-ingredient :ingredient="$ingredient" :key="$ingredient->id" />
+            @else
+                <li>{{ $ingredient->amount }} {{ $ingredient->measurement }} {{ $ingredient->ingredient }}</li>
+            @endif
         @empty
             <p>There are no ingredients for this recipe</p>
         @endforelse
