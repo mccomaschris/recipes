@@ -16,8 +16,8 @@
         </span>
         <span x-show="isEditing" class="flex my-4" x-cloak>
             <form wire:submit.prevent="save" class="flex justify-between flex-wrap w-full" x-on:submit="isEditing = false" x-on:click.away="isEditing = false">
-                <input wire:model="newAmount" x-ref="textInput"  type="text" class="form-input w-full lg:w-auto" placeholder="1/2, 1, etc" required />
-                <select wire:model="newMeasurement" class="mt-4 lg:mt-0 lg:ml-4 form-select w-full lg:w-auto">
+                <input x-cloak wire:model="newAmount" x-ref="textInput"  type="text" class="form-input w-full lg:w-auto" placeholder="1/2, 1, etc" required />
+                <select x-cloak wire:model="newMeasurement" class="mt-4 lg:mt-0 lg:ml-4 form-select w-full lg:w-auto">
                     <option value=""></option>
                     <option value="tsp">tsp</option>
                     <option value="tbsp">tbsp</option>
@@ -37,8 +37,8 @@
                     <option value="kilogram">kilogram</option>
                     <option value="cloves">cloves</option>
                 </select>
-                <input wire:model="newIngredient" type="text" class="mt-4 lg:mt-0 lg:ml-4 form-input lg:flex-1 w-full lg:w-auto" placeholder="Add ingredient" required />
-                <input type="submit" value="Save" class="mt-4 lg:mt-0 lg:ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                <input x-cloak wire:model="newIngredient" type="text" class="mt-4 lg:mt-0 lg:ml-4 form-input lg:flex-1 w-full lg:w-auto" placeholder="Add ingredient" required />
+                <input x-cloak type="submit" value="Save" class="mt-4 lg:mt-0 lg:ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             </form>
         </span>
     </li>
