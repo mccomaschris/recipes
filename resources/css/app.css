@@ -13,3 +13,7 @@ main a {
 main a:hover {
     @apply text-green-700 no-underline;
 }
+
+.turbolinks-progress-bar {
+    @apply h-2 bg-green-500;
+  }

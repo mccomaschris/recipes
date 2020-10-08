@@ -6,7 +6,7 @@
             @if(Auth::check())
                 <livewire:edit-instruction :instruction="$instruction" :key="$instruction->id" />
             @else
-                {{ $instruction->instruction }}
+                <li>{{ $instruction->instruction }}</li>
             @endif
         @empty
             <p>There are no instructions for this recipe</p>
