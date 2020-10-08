@@ -19,7 +19,7 @@
         <livewire:ingredients :recipe="$recipe" />
     </div>
 
-    <div class="mt-10">
+    <div class="mt-6">
         <livewire:instructions :recipe="$recipe" />
     </div>
 
@@ -29,5 +29,4 @@
             {{ $recipe->notes }}
         </div>
     @endif
-
 @endsection

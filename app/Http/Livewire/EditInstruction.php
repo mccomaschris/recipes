@@ -14,6 +14,11 @@ class EditInstruction extends Component
         'instruction' => 'required',
     ];
 
+    public function mount()
+    {
+        $this->newInstruction = $this->instruction->instruction;
+    }
+
     public function save()
     {
         $this->validate();
@@ -23,16 +28,10 @@ class EditInstruction extends Component
         $instruction->save();
 
         $this->instruction = $instruction;
+        $this->newInstruction = $instruction;
 
-        $this->newInstruction = '';
+        session()->flash('message', 'This instruction item has been updated.');
 
-        session()->flash('message', 'This instruction has been updated.');
-
-    }
-
-    public function mount()
-    {
-        $this->newInstruction = $this->instruction->instruction;
     }
 
     public function render()

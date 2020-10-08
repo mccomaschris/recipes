@@ -3,7 +3,7 @@
 
     <ol class="list-decimal list-inside">
         @forelse ($recipe->instructions as $instruction)
-            <li>{{ $instruction->instruction }}</li>
+            <livewire:edit-instruction :instruction="$instruction" :key="$instruction->id" />
         @empty
             <p>There are no instructions for this recipe</p>
         @endforelse

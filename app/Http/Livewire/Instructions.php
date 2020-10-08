@@ -15,6 +15,11 @@ class Instructions extends Component
         'instruction' => 'required',
     ];
 
+    public function refreshRecipe()
+    {
+        $this->recipe = Recipe::find($this->recipe->id);
+    }
+
     public function submit()
     {
         $this->validate();
@@ -26,7 +31,7 @@ class Instructions extends Component
 
         $this->instruction = '';
 
-        $this->recipe = Recipe::find($this->recipe->id);
+        $this->refreshRecipe();
 
         session()->flash('message', 'This instruction has been added.');
 
