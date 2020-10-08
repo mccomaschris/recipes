@@ -12,10 +12,11 @@
     @if(Auth::check())
         <div class="bg-gray-100 px-3 py-2 my-3 rounded">
             <div class="font-semibold mb-2">Add instruction</div>
-            <form wire:submit.prevent="submit">
+            <form wire:submit.prevent="submit" class="flex">
                 @csrf
                 <label for="instruction" class="hidden">Instruction</label>
                 <input wire:model="instruction" type="text" class="form-input w-full" placeholder="Add instruction" required />
+                <input type="submit" value="Save" class="mt-4 lg:mt-0 lg:ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             </form>
         </div>
     @endif

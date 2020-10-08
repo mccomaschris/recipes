@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
-@section('title', $recipe->title)
 
 @section('content')
-    @if($recipe->favorite)
-        <div class="mb-6">
-        <span class="uppercase rounded bg-green-400 text-white text-xs font-semibold px-3 py-1">Favorite</span>
-        </div>
-    @endif
+    <h1 class="mt-4 font-bold text-xl mb-4">
+        {{ $recipe->title }}
+        @if($recipe->favorite)
+        <span class="ml-3 uppercase rounded bg-green-400 text-white text-xs font-semibold px-3 py-1">Favorite</span>
+        @endif
+    </h1>
 
     @if($recipe->description)
         <div class="mb-10">

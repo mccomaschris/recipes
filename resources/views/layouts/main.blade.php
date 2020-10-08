@@ -39,8 +39,6 @@
             <main class="bg-white mx-auto px-6 lg:px-10 py-6 w-full lg:w-3/5 rounded shadow">
                 <div class="font-serif text-3xl font-semibold"><a href="/">Chris' Recipes</a></div>
 
-                <h1 class="mt-4 font-bold text-xl">@yield('title')</h1>
-
                 <div class="my-4">
                     @yield('content')
                 </div>
