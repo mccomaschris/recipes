@@ -11,7 +11,7 @@
 
     @if($recipe->description)
         <div class="mb-10">
-            {{ $recipe->description }}
+            {!! $recipe->description !!}
         </div>
     @endif
 

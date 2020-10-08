@@ -2,4 +2,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-x-cloak { display: hidden }
+x-cloak {
+    @apply hidden;
+}
+
+main a {
+    @apply text-green-500 underline;
+}
+
+main a:hover {
+    @apply text-green-700 no-underline;
+}
