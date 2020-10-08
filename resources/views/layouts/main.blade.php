@@ -30,6 +30,7 @@
         <title>{{ config('app.name', 'Recipes') }}</title>
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="{{ asset('js/app.js') }}"></script>
 
 
         @livewireStyles
@@ -66,5 +67,6 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
     </body>
 </html>
