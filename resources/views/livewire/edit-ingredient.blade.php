@@ -14,7 +14,7 @@
         <span x-on:click="isEditing = true; $nextTick(() => focus())">
             {{ $ingredient->amount }} {{ $ingredient->measurement }} {{ $ingredient->ingredient }}
         </span>
-        <span x-show="isEditing" class="flex" x-cloak>
+        <span x-show="isEditing" class="flex my-4" x-cloak>
             <form wire:submit.prevent="save" class="flex justify-between flex-wrap w-full" x-on:submit="isEditing = false" x-on:click.away="isEditing = false">
                 <input wire:model="newAmount" x-ref="textInput"  type="text" class="form-input w-full lg:w-auto" placeholder="1/2, 1, etc" required />
                 <select wire:model="newMeasurement" class="mt-4 lg:mt-0 lg:ml-4 form-select w-full lg:w-auto">
