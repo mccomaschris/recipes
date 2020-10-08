@@ -1,26 +1,18 @@
 @extends('layouts.main')
 
-@section('title', 'All Recipes')
-
 @section('content')
     <div class="flex flex-wrap lg:-mx-6">
         <div class="w-full lg:w-1/2 lg:px-6">
-            <ul class="list-disc list-inside">
-                @forelse ($recipes as $recipe)
-                    <li><a href="/recipe/{{ $recipe->slug }}" class="text-green-500 hover:text-green-800 hover:underline">{{ $recipe->title }}</a> @if($recipe->favorite) <span class="ml-2 uppercase rounded bg-green-400 text-white text-xs font-semibold px-3 py-1">Favorite</span> @endif</li>
-                @empty
-                    <p>No recipes</p>
-                @endforelse
-            </ul>
+            <livewire:search-recipes />
         </div>
         <div class="w-full lg:w-1/2 lg:px-6 mt-12 lg:mt-0">
             @if(Auth::check())
-                <div class="font-semibold">Create New Recipe</div>
+                <div class="font-semibold text-lg">Create New Recipe</div>
                 <form method="POST" action="/recipe">
                     @csrf
                     <div class="my-6">
                         <label for="title" class="hidden">Title</label>
-                        <input type="text" name="title" id="title" placeholder="Recipe Title" class="form-input w-full" autofocus required />
+                        <input type="text" name="title" id="title" placeholder="Recipe Title" class="form-input w-full"  required />
                         @error('title')
                             <div class="text-sm mt-2 text-red-500 font-semibold">{{ $message }}</div>
                         @enderror
