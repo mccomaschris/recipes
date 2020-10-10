@@ -6,7 +6,7 @@
             @if(Auth::check())
                 <livewire:edit-ingredient :ingredient="$ingredient" :key="$ingredient->id" />
             @else
-                <li>{{ $ingredient->amount }} @plural($ingredient->measurement, $ingredient->amount) {{ $ingredient->ingredient }}</li>
+                <li>{{ $ingredient->amount }} {{ str_plural($ingredient->measurement, $ingredient->amount) }} {{ $ingredient->ingredient }}</li>
             @endif
         @empty
             <p>There are no ingredients for this recipe</p>
