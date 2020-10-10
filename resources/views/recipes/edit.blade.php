@@ -13,6 +13,9 @@
                 <div class="text-sm mt-2 text-red-500 font-semibold">{{ $message }}</div>
             @enderror
         </div>
+
+        <livewire:recipe-tags :recipe="$recipe" />
+
         <div class="my-6">
             <label for="description" class="block">
                 <textarea class="form-textarea block w-full" name="description" id="description"  rows="3" placeholder="Recipe description.">{{ $recipe->description }}</textarea>

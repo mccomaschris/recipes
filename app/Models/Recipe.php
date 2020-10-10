@@ -47,4 +47,12 @@ class Recipe extends Model
     {
         return $this->hasMany('App\Models\Instruction');
     }
+
+    /**
+     * The tags that belong to the recipe.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag');
+    }
 }

@@ -4,11 +4,15 @@
 @section('content')
     <h1 class="mt-4 font-bold text-xl mb-4">
         {{ $recipe->title }}
-        @if($recipe->favorite)
-            <span class="ml-3 uppercase rounded bg-green-400 text-white text-xs font-semibold px-3 py-1">Favorite</span>
-        @endif
     </h1>
 
+    @if($recipe->tags)
+        <div class="my-6">
+            @foreach ($recipe->tags as $tag)
+                <x-tags.inactive href="/?tag={{ $tag->id }}">{{ $tag->name }}</x-tag>
+            @endforeach
+        </div>
+    @endif
     @if($recipe->description)
         <div class="mb-10">
             {!! $recipe->description !!}

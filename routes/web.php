@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RecipeController;
+use App\Http\Livewire\SearchRecipes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [RecipeController::class, 'index'])->name('recipe.index');
+Route::get('/', SearchRecipes::class)->name('recipe.index');
 Route::get('/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
 
