@@ -6,7 +6,7 @@
             @if(Auth::check())
                 <livewire:edit-ingredient :ingredient="$ingredient" :key="$ingredient->id" />
             @else
-                <li>{{ $ingredient->amount }} {{ $ingredient->measurement }} {{ $ingredient->ingredient }}</li>
+                <li>{{ $ingredient->amount }} @plural($ingredient->measurement, $ingredient->amount) {{ $ingredient->ingredient }}</li>
             @endif
         @empty
             <p>There are no ingredients for this recipe</p>
@@ -22,17 +22,17 @@
                     <option value=""></option>
                     <option value="tsp">tsp</option>
                     <option value="tbsp">tbsp</option>
+                    <option value="lb">lb</option>
+                    <option value="cup">cup</option>
+                    <option value="oz">oz</option>
                     <option value="floz">fluid oz</option>
                     <option value="gill">gill</option>
-                    <option value="cup">cup</option>
                     <option value="pt">pint</option>
                     <option value="qt">quart</option>
                     <option value="gal">gallon</option>
                     <option value="milliliter">milliliter</option>
                     <option value="liter">liter</option>
                     <option value="deciliter">deciliter</option>
-                    <option value="lbs">lbs</option>
-                    <option value="oz">oz</option>
                     <option value="milligram">milligram</option>
                     <option value="gram">gram</option>
                     <option value="kilogram">kilogram</option>
