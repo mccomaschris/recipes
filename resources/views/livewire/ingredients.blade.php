@@ -1,7 +1,7 @@
 <div x-cloak>
     <h2 class="mb-2 font-semibold">Ingredients</h2>
 
-    <ul class="list-disc list-inside">
+    <ul class="list-disc list-outside ml-4">
         @forelse ($recipe->ingredients as $ingredient)
             @if(Auth::check())
                 <livewire:edit-ingredient :ingredient="$ingredient" :key="$ingredient->id" />

@@ -1,7 +1,7 @@
 <div  x-cloak>
     <h2 class="mb-2 font-semibold">Instructions</h2>
 
-    <ol class="list-decimal list-inside">
+    <ol class="list-decimal list-outside ml-4">
         @forelse ($recipe->instructions as $instruction)
             @if(Auth::check())
                 <livewire:edit-instruction :instruction="$instruction" :key="$instruction->id" />
