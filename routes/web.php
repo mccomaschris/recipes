@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', SearchRecipes::class)->name('recipe.index');
-Route::get('/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
 Route::post('/recipe', [RecipeController::class, 'store'])->name('recipe.store');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/recipe/create', [RecipeController::class, 'create'])->name('recipe.create');
     Route::get('/recipe/{recipe}/edit', [RecipeController::class, 'edit'])->name('recipe.edit');
     Route::put('/recipe/{recipe}', [RecipeController::class, 'update'])->name('recipe.update');
 });
+
+Route::get('/recipe/{recipe}', [RecipeController::class, 'show'])->name('recipe.show');
