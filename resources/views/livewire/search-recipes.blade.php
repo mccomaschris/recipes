@@ -15,7 +15,7 @@
 
     <div class="w-full lg:w-1/2 lg:px-6 mt-6 lg:mt-0">
         <div class="font-semibold text-lg">Filter by Type</div>
-        <div class="flex flex-wrap space-x-1 space-y-1 mt-6">
+        <div class="flex flex-wrap space-x-1 mt-6">
             @foreach($tags as $item)
                 @if ($tag == $item->id)
                     <x-tags.active id="{{ $item->id }}" wire:click.prevent="getTag('{{ $item->name }}')">{{ $item->name }}</x-tag>

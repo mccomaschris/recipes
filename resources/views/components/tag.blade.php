@@ -3,7 +3,7 @@
 ) --}}
 
 <a {{ $attributes->merge([
-    'class' => 'no-underline py-1 px-3 rounded uppercase text-xs font-semibold tracking-wide inline-block cursor-pointer',
+    'class' => 'mb-2 no-underline py-1 px-3 rounded uppercase text-xs font-semibold tracking-wide inline-block cursor-pointer',
 ]) }}
 >
     {{ $slot }}
