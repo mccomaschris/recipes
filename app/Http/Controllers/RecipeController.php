@@ -28,7 +28,7 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        return view('recipes.show', ['recipe' => $recipe]);
+        return view('recipes.show', compact('recipe'));
     }
 
     /**
@@ -39,13 +39,30 @@ class RecipeController extends Controller
      */
     public function search(Request $request)
     {
-        if ($request->has('search')) {
-            $search_query = $request->input('search');
-        } else {
+        if (! $request->has('search') || ! $request->has('search') ) {
             redirect('/');
         }
 
-        $recipes = Recipe::where('title', 'LIKE', "%{$search_query}%")->get();
+        if ($request->has('search')) {
+            $recipes = Recipe::where('title', 'LIKE', "%{$request->input('search')}%")->get();
+        }
+
+        if ($request->has('tag')) {
+            $recipes = Recipe::whereHas('tags', function($query) use($request) {
+                $query->where('tags.id', $request->input('tag'));
+            })->get();
+        }
         return view('recipes.search', compact('recipes'));
+    }
+
+    /**
+     * Show the random
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function random()
+    {
+        $recipes = Recipe::inRandomOrder()->take(9)->get();
+        return view('recipes.random', compact('recipes'));
     }
 }

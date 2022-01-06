@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -49,6 +50,7 @@ class Recipe extends Resource
             Trix::make('Notes')->hideFromIndex(),
             Boolean::make('Active'),
             Boolean::make('Favorite'),
+            Image::make('Photo', 'image_url')->nullable(),
 
             HasMany::make('Instructions'),
             HasMany::make('Ingredients'),

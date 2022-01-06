@@ -6,15 +6,26 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-wrap lg:-mx-6">
-        <div class="w-full lg:w-1/3 lg:px-6"></div>
-        <div class="w-full lg:w-2/3 lg:px-6">
+    <div class="flex flex-wrap lg:-mx-12">
+        <div class="w-full lg:w-1/3 lg:px-12"></div>
+        <div class="w-full lg:w-2/3 lg:px-12">
             <h1>{{ $recipe->title }}</h1>
+            @if($recipe->tags)
+            <div class="my-6">
+                @foreach ($recipe->tags as $tag)
+                    <x-tags.active href="{{ route('tags.show', $tag->slug) }}">{{ $tag->name }}</x-tag>
+                @endforeach
+            </div>
+        @endif
         </div>
     </div>
 
-<div class="flex flex-wrap lg:-mx-6">
-    <div class="w-full lg:w-1/3 lg:px-6">
+<div class="flex flex-wrap lg:-mx-12">
+    <div class="w-full lg:w-1/3 lg:px-12">
+        @if ($recipe->image_url)
+            <img src="/{{ $recipe->image_url }}" class="rounded shadow-sm w-full" />
+        @endif
+
         <h2>Ingredients</h2>
         <ul class="list-none pl-0">
         @forelse ($recipe->ingredients as $ingredient)
@@ -24,16 +35,8 @@
         @endforelse
         </ul>
     </div>
-    <div class="w-full lg:w-2/3 lg:px-6">
+    <div class="w-full lg:w-2/3 lg:px-12">
         {!! $recipe->description !!}
-
-        @if($recipe->tags)
-            <div class="my-6">
-                @foreach ($recipe->tags as $tag)
-                    <x-tags.inactive href="/?tag={{ $tag->id }}">{{ $tag->name }}</x-tag>
-                @endforeach
-            </div>
-        @endif
 
         <h2>Instructions</h2>
         <div>
