@@ -57,6 +57,20 @@ class Instruction extends Resource
     }
 
     /**
+     * Return redirect to the actual recipe upon update.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Laravel\Nova\Resource  $resource
+     * @return string
+     */
+    public static function redirectAfterUpdate(NovaRequest $request, $resource)
+    {
+        $instruction = ModelsInstruction::find($resource->id);
+        $recipe = $instruction->recipe;
+        return '/resources/recipes/' . $recipe->id;
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -56,6 +56,20 @@ class Ingredient extends Resource
     }
 
     /**
+     * Return redirect to the actual recipe upon update.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Laravel\Nova\Resource  $resource
+     * @return string
+     */
+    public static function redirectAfterUpdate(NovaRequest $request, $resource)
+    {
+        $ingredient = ModelsIngredient::find($resource->id);
+        $recipe = $ingredient->recipe;
+        return '/resources/recipes/' . $recipe->id;
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
