@@ -1,4 +1,4 @@
-<div class="w-full flex gap-x-8 lg:grid lg:grid-cols-3 lg:gap-6 snap-x snap-mandatory overflow-x-auto">
+<div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-8">
     @forelse ($recipes as $recipe)
         <x-recipes.recipe-list-item :recipe=$recipe/>
     @empty

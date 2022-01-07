@@ -23,6 +23,6 @@
             </div>
         </div>
     </div>
-    <h1 class="leading-none mb-0"></h1>
+
     <x-recipes.recipe-list :recipes=$recipes />
 @endsection

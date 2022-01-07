@@ -15,15 +15,12 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $tags = Tag::orderby('name')->get();
-        $recents = Recipe::orderby('created_at', 'desc')->take(9)->get();
-        $favorites = Recipe::where('favorite', true)->inRandomOrder()->take(9)->get();
-        $randoms = Recipe::inRandomOrder()->take(9)->get();
+        $recipes = Recipe::orderby('created_at', 'desc')->paginate(9);
+        $tags = Tag::orderby('name', 'asc')->get();
+
         return view('recipes.index', [
-            'recents' => $recents,
-            'favorites' => $favorites,
-            'randoms' => $randoms,
-            'tags' => $tags
+            'recipes' => $recipes,
+            'tags' => $tags,
         ]);
     }
 

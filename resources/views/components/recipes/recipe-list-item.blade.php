@@ -1,5 +1,5 @@
-<div class="snap-start shrink-0">
-    <div class="h-full border border-stone-200 rounded flex flex-col w-72 lg:w-auto bg-stone-50">
+<div class="w-full">
+    <div class="h-full border border-stone-200 rounded flex flex-col bg-stone-50">
         @if ($recipe->image_url)
             <div class="h-48 bg-cover bg-center" style="background: url({{ $recipe->image_url }})"></div>
         @else
