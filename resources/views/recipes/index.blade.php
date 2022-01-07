@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="lg:sticky lg:top-0 bg-stone-100 lg:pt-4 lg:pb-8 lg:border-b border-stone-200">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-center lg:justify-between">
             <h1 class="leading-none mb-0">Recipes</h1>
             <div class="hidden lg:block">
                 <label for="nav" class="hidden">Navigation</label>
