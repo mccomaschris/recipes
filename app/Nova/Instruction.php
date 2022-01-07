@@ -65,7 +65,6 @@ class Instruction extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
             Number::make('Order By'),
             Text::make('Instruction'),
             BelongsTo::make('Recipe')->showCreateRelationButton(),
