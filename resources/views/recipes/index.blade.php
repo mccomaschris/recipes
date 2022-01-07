@@ -18,9 +18,11 @@
     <h2>Categories</h2>
     <div class="flex flex-wrap gap-x-2 gap-y-1">
         @foreach($tags as $tag)
-            <div class="">
-                <x-tags.active href="{{ route('tag.show', $tag->slug) }}">{{ $tag->name }}</x-tag>
-            </div>
+            @if($tag->recipe_count > 0)
+                <div class="">
+                    <x-tags.active href="{{ route('tag.show', $tag->slug) }}">{{ $tag->name }} ({{ $tag->recipe_count }})</x-tag>
+                </div>
+            @endif
         @endforeach
     </div>
 

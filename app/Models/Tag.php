@@ -34,6 +34,11 @@ class Tag extends Model
         return 'slug';
     }
 
+    public function getRecipeCountAttribute()
+    {
+        return count($this->recipes);
+    }
+
     /**
      * The recipes that belong to the tag.
      */
