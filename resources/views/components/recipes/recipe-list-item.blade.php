@@ -1,5 +1,5 @@
 <div class="w-full">
-    <div class="h-full border border-stone-200 rounded flex flex-col bg-stone-50">
+    <div class="h-full border border-stone-300 rounded flex flex-col bg-stone-50 shadow-sm transition-all duration-200 ease-out hover:shadow-lg">
         @if ($recipe->image_url)
             <div class="h-48 bg-cover bg-center" style="background: url({{ $recipe->image_url }})"></div>
         @else
