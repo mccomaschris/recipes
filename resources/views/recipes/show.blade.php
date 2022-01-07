@@ -13,7 +13,7 @@
             @if($recipe->tags)
             <div class="my-6">
                 @foreach ($recipe->tags as $tag)
-                    <x-tags.active href="{{ route('tags.show', $tag->slug) }}">{{ $tag->name }}</x-tag>
+                    <x-tags.active href="{{ route('tag.show', $tag->slug) }}">{{ $tag->name }}</x-tag>
                 @endforeach
             </div>
         @endif

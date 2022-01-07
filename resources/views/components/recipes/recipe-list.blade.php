@@ -2,6 +2,6 @@
     @forelse ($recipes as $recipe)
         <x-recipes.recipe-list-item :recipe=$recipe/>
     @empty
-        <p>No recipes found.</p>
+        <p class="lg:px-4">No recipes found.</p>
     @endforelse
 </div>

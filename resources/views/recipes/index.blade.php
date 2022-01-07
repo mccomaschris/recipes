@@ -14,6 +14,7 @@
             </div>
         </div>
     </div>
+
     <h2 class="scroll-mt-24" id="recent">Recently Added Recipes</h2>
     <x-recipes.recipe-list :recipes=$recents />
 

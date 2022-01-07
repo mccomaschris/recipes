@@ -16,8 +16,16 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
+        $tags = Tag::orderby('name', 'asc')->get();
+
         $recipes = Recipe::whereHas('tags', function($query) use($tag) {
-            $query->where('tags.id', $tag->id);
+            $query->where('tags.slug', $tag->slug);
         })->get();
+
+        return view('tags.show', [
+            'tags' => $tags,
+            'tag' => $tag,
+            'recipes' => $recipes
+        ]);
     }
 }
