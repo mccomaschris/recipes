@@ -15,6 +15,15 @@
         </div>
     </div>
 
+    <h2>Categories</h2>
+    <div class="flex flex-wrap gap-x-2 gap-y-1">
+        @foreach($tags as $tag)
+            <div class="">
+                <x-tags.active href="{{ route('tag.show', $tag->slug) }}">{{ $tag->name }}</x-tag>
+            </div>
+        @endforeach
+    </div>
+
     <h2 class="scroll-mt-24" id="recent">Recently Added Recipes</h2>
     <x-recipes.recipe-list :recipes=$recents />
 

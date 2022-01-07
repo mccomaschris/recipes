@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -14,10 +15,16 @@ class RecipeController extends Controller
      */
     public function index()
     {
+        $tags = Tag::orderby('name')->get();
         $recents = Recipe::orderby('created_at', 'desc')->take(9)->get();
         $favorites = Recipe::where('favorite', true)->inRandomOrder()->take(9)->get();
         $randoms = Recipe::inRandomOrder()->take(9)->get();
-        return view('recipes.index', compact('recents', 'favorites', 'randoms'));
+        return view('recipes.index', [
+            'recents' => $recents,
+            'favorites' => $favorites,
+            'randoms' => $randoms,
+            'tags' => $tags
+        ]);
     }
 
     /**
