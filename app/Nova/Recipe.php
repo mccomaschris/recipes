@@ -47,6 +47,9 @@ class Recipe extends Resource
     {
         return [
             Text::make('Title')->sortable(),
+            Text::make('Show', function () {
+                return '<a href="/recipe/' . $this->slug  . '/" target="_blank">View ' . $this->name  . ' Recipe</a>';
+            })->asHtml(),
             Trix::make('Description')->hideFromIndex(),
             Trix::make('Notes')->hideFromIndex(),
             Boolean::make('Active'),

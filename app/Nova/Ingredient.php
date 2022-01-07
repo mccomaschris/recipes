@@ -26,11 +26,14 @@ class Ingredient extends Resource
     public static $displayInNavigation = false;
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
+     * Get the value that should be displayed to represent the resource.
      *
-     * @var string
+     * @return string
      */
-    public static $title = 'id';
+    public function title()
+    {
+        return $this->amount . ' ' . $this->measurement . ' ' . $this->ingredient;
+    }
 
     /**
      * The columns that should be searched.
@@ -40,6 +43,13 @@ class Ingredient extends Resource
     public static $search = [
         'id',
     ];
+
+    /**
+     * The number of resources to show per page via relationships.
+     *
+     * @var int
+     */
+    public static $perPageViaRelationship = 25;
 
     /**
      * Return redirect to the actual recipe upon creation.
