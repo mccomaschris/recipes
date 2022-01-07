@@ -14,7 +14,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recents = Recipe::take(9)->get();
+        $recents = Recipe::orderby('created_at', 'desc')->take(9)->get();
         $favorites = Recipe::where('favorite', true)->inRandomOrder()->take(9)->get();
         $randoms = Recipe::inRandomOrder()->take(9)->get();
         return view('recipes.index', compact('recents', 'favorites', 'randoms'));
