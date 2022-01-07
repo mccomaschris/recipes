@@ -6,7 +6,7 @@
             <div class="bg-stone-700 h-48 flex items-center justify-center font-semibold text-stone-200">No image available.</div>
         @endif
         <div class="flex flex-col px-6 py-6">
-            <a href="{{ route('recipe.show', $recipe->slug) }}" class="text-xl">{{ $recipe->title }}</a>
+            <a href="{{ route('recipe.show', $recipe->slug) }}" class="text-xl transition-all duration-100 ease-out">{{ $recipe->title }}</a>
             <div class="my-2 flex-1">
                 {!! $recipe->description !!}
             </div>
