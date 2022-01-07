@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\Ingredient as ModelsIngredient;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -41,6 +42,20 @@ class Ingredient extends Resource
     ];
 
     /**
+     * Return redirect to the actual recipe upon creation.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Laravel\Nova\Resource  $resource
+     * @return string
+     */
+    public static function redirectAfterCreate(NovaRequest $request, $resource)
+    {
+        $ingredient = ModelsIngredient::find($resource->id);
+        $recipe = $ingredient->recipe;
+        return '/resources/recipes/' . $recipe->id;
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -51,7 +66,7 @@ class Ingredient extends Resource
         return [
             Text::make('Amount'),
             Text::make('Measurement'),
-            Text::make('Type'),
+            // Text::make('Type')->nullable(),
             Text::make('Ingredient'),
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\Instruction as ModelsInstruction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -42,6 +43,20 @@ class Instruction extends Resource
     ];
 
     /**
+     * Return redirect to the actual recipe upon creation.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Laravel\Nova\Resource  $resource
+     * @return string
+     */
+    public static function redirectAfterCreate(NovaRequest $request, $resource)
+    {
+        $instruction = ModelsInstruction::find($resource->id);
+        $recipe = $instruction->recipe;
+        return '/resources/recipes/' . $recipe->id;
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -51,8 +66,9 @@ class Instruction extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Instruction'),
             Number::make('Order By'),
+            Text::make('Instruction'),
+            BelongsTo::make('Recipe')->showCreateRelationButton(),
         ];
     }
 
